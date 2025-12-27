@@ -45,7 +45,7 @@ header .subtitle:hover {
 header {
   text-align: center;
   padding: 80px 20px; /* increase vertical padding if needed */
-  background-image: url('photos/hero.jpg'); /* replace with your image */
+  background-image: url('photos/hero-mobile.jpg'); /* replace with your image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
