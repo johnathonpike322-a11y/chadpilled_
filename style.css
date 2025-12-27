@@ -52,7 +52,11 @@ header {
   color: #fff; /* ensures text is visible */
   position: relative;
 }
-
+@media (max-width: 768px) {
+  header {
+    background-image: url('photos/hero-mobile.jpg'); /* mobile image */
+  }
+}
 /* Gallery layout */
 .gallery {
   display: grid;
