@@ -57,6 +57,22 @@ header {
     background-image: url('photos/hero-mobile.jpg'); /* mobile image */
   }
 }
+/* Overlay for hero image */
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* covers the entire header */
+  background: rgba(0, 0, 0, 0.4); /* adjust 0.1–0.6 for brightness */
+  z-index: 0;
+}
+
+/* Ensure header text is above the overlay */
+header h1,
+header .subtitle,
+header a.subtitle {
+  position: relative;
+  z-index: 1;
+}
 /* Gallery layout */
 .gallery {
   display: grid;
