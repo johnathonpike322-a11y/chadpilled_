@@ -10,41 +10,59 @@
 
 <header>
   <h1>ChadPilled</h1>
+  <p class="subtitle">A selection of my photography</p>
 </header>
 
 <main class="gallery">
-  <img src="photos/hotelroom.jpg" alt="">
-  <img src="photos/coffee.jpg" alt="">
-  <img src="photos/brushingteeth.jpg" alt="">
-  <img src="photos/warrenwind.jpg" alt="">
-  <img src="photos/tower.jpg" alt="">
-  <img src="photos/poop.jpg" alt="">
-  <img src="photos/pia.jpg" alt="">
-  <img src="photos/jamesfire.jpg" alt="">
-  <img src="photos/warren.jpg" alt="">
-  <img src="photos/egg.jpg" alt="">
-  <img src="photos/ben.jpg" alt="">
-  <img src="photos/warrenalice.jpg" alt="">
-  <img src="photos/view.jpg" alt="">
-  <img src="photos/jamesjungle.jpg" alt="">
-  <img src="photos/jamesjuice.jpg" alt="">
-  <img src="photos/jamesbryce.jpg" alt="">
-  <img src="photos/denverjungle.jpg" alt="">
-  <img src="photos/jamesbeach.jpg" alt="">
-  <img src="photos/image.jpg" alt="">
-  <img src="photos/image.jpg" alt="">
-  <img src="photos/image.jpg" alt="">
-  <img src="photos/image.jpg" alt="">
-  <img src="photos/image.jpg" alt="">
-  <img src="photos/image.jpg" alt="">
-  <img src="photos/image.jpg" alt="">
-  <img src="photos/image.jpg" alt="">
-  <img src="photos/image.jpg" alt="">
-  <img src="photos/image.jpg" alt="">
-  <img src="photos/image.jpg" alt="">
-  <img src="photos/image.jpg" alt="">
-  <img src="photos/image.jpg" alt="">
+  <figure>
+    <img src="photos/hotelroom.jpg" alt="">
+    <figcaption>Hotel Room</figcaption>
+  </figure>
+  <figure>
+    <img src="photos/coffee.jpg" alt="">
+    <figcaption>Coffee</figcaption>
+  </figure>
+  <figure>
+    <img src="photos/brushingteeth.jpg" alt="">
+    <figcaption>Brushing Teeth</figcaption>
+  </figure>
+  <!-- Add more images in the same pattern -->
 </main>
+
+<!-- Lightbox Overlay -->
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img">
+  <div id="lightbox-caption"></div>
+</div>
+
+<script>
+  // Lightbox JS
+  const figures = document.querySelectorAll('.gallery figure');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const closeBtn = document.querySelector('.close');
+
+  figures.forEach(fig => {
+    fig.addEventListener('click', () => {
+      const img = fig.querySelector('img');
+      const caption = fig.querySelector('figcaption').innerText;
+      lightbox.style.display = 'block';
+      lightboxImg.src = img.src;
+      lightboxCaption.innerText = caption;
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+
+  // Close lightbox on click outside image
+  lightbox.addEventListener('click', (e) => {
+    if(e.target === lightbox) lightbox.style.display = 'none';
+  });
+</script>
 
 </body>
 </html>
