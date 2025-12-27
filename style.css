@@ -133,3 +133,16 @@ header .subtitle {
     font-size: 0.9rem;
   }
 }
+.gallery figure {
+  cursor: zoom-in;
+}
+.gallery figure:active img {
+  opacity: 0.85;
+}
+.gallery figcaption {
+  transform: translateY(10px);
+}
+
+.gallery figure:hover figcaption {
+  transform: translateY(0);
+}
