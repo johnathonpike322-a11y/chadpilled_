@@ -7,11 +7,14 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* Password screen */
+    /* =========================
+       PASSWORD SCREEN (KRONOS)
+       ========================= */
+
     #password-overlay {
       position: fixed;
       inset: 0;
-      background: #0e0e0e;
+      background: radial-gradient(circle at top, #7fb2b0, #2f5f63 70%, #0c1f22);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -21,44 +24,70 @@
     }
 
     #password-box {
-      max-width: 300px;
       width: 100%;
+      max-width: 600px;
+    }
+
+    /* Curved band */
+    .password-band {
+      background: rgba(220, 240, 240, 0.75);
+      padding: 30px 20px;
+      border-radius: 120px;
+      box-shadow:
+        0 0 40px rgba(255,255,255,0.35),
+        inset 0 0 20px rgba(255,255,255,0.4);
     }
 
     #password-box h2 {
-      font-weight: 300;
-      letter-spacing: 2px;
-      margin-bottom: 20px;
+      margin: 0 0 14px;
+      font-weight: 400;
+      letter-spacing: 6px;
+      color: #000;
+      font-size: 1.1rem;
     }
 
     #password-box input {
-      width: 100%;
-      padding: 12px;
-      background: #111;
-      border: 1px solid #333;
-      color: #fff;
-      font-size: 1rem;
-      margin-bottom: 10px;
+      width: 80%;
+      max-width: 360px;
+      padding: 10px 14px;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #000;
+      color: #000;
+      font-size: 1.2rem;
       text-align: center;
+      letter-spacing: 4px;
+      outline: none;
+    }
+
+    #password-box input::placeholder {
+      color: rgba(0,0,0,0.4);
+      letter-spacing: 3px;
     }
 
     #password-box button {
-      width: 100%;
-      padding: 12px;
-      background: #fff;
+      margin-top: 20px;
+      padding: 10px 28px;
+      background: rgba(0,0,0,0.8);
+      color: #dff;
       border: none;
-      font-size: 1rem;
+      letter-spacing: 2px;
       cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    #password-box button:hover {
+      background: #000;
     }
 
     #password-error {
-      color: #ff6666;
+      color: #ffd0d0;
       font-size: 0.9rem;
-      margin-top: 10px;
+      margin-top: 14px;
       display: none;
     }
 
-    /* Fade-in setup */
+    /* Fade-in site */
     #site-content {
       opacity: 0;
       visibility: hidden;
@@ -76,10 +105,12 @@
 <!-- PASSWORD OVERLAY -->
 <div id="password-overlay">
   <div id="password-box">
-    <h2>Enter Password</h2>
-    <input type="password" id="password-input" placeholder="Password">
-    <button onclick="unlockSite()">Enter</button>
-    <div id="password-error">Incorrect password</div>
+    <div class="password-band">
+      <h2>PASSWORD</h2>
+      <input type="password" id="password-input" placeholder="••••••">
+    </div>
+    <button onclick="unlockSite()">ENTER</button>
+    <div id="password-error">ACCESS DENIED</div>
   </div>
 </div>
 
@@ -99,7 +130,6 @@
 
 <main class="gallery">
   <!-- ALL images unchanged -->
-
   <figure><img src="photos/hotelroom.jpg"><figcaption>Hotel Room</figcaption></figure>
   <figure><img src="photos/coffee.jpg"><figcaption>Coffee</figcaption></figure>
   <figure><img src="photos/brushingteeth.jpg"><figcaption>Brushing Teeth</figcaption></figure>
@@ -131,10 +161,10 @@
   <div id="lightbox-caption"></div>
 </div>
 
-</div> <!-- end site-content -->
+</div>
 
 <script>
-  const correctPassword = "KRONOS"; // CHANGE THIS
+  const correctPassword = "KRONOS";
 
   function unlockSite() {
     const input = document.getElementById('password-input').value;
