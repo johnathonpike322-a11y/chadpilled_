@@ -189,3 +189,12 @@ header a.subtitle {
 .gallery figure:hover figcaption {
   transform: translateY(0);
 }
+/* Fade-in effect after unlock */
+.fade-hidden {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.fade-visible {
+  opacity: 1;
+}
