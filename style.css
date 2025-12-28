@@ -215,14 +215,15 @@ header a.subtitle {
   100% { box-shadow: 0 0 30px rgba(255,255,255,0.3); }
 }
 
-/* Make the password band a full-width rectangular strip */
+/* Force the KRONOS band to truly span edge-to-edge */
 .password-band {
   width: 100vw;
-  max-width: none;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   border-radius: 0;
-  padding: 28px 0;
-  display: flex;
-  justify-content: center;
+}
+
 
   /* keep your glow animation */
   animation: pulseGlow 4s infinite ease-in-out;
