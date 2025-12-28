@@ -29,7 +29,6 @@ header .subtitle {
   font-size: 1rem;
   color: #ccc;
 }
-
 header .subtitle {
   margin-top: 14px;
   font-weight: 200;
@@ -43,7 +42,6 @@ header .subtitle {
 header .subtitle:hover {
   opacity: 0.6;
 }
-
 header {
   text-align: center;
   padding: 80px 20px; /* increase vertical padding if needed */
@@ -54,13 +52,11 @@ header {
   color: #fff; /* ensures text is visible */
   position: relative;
 }
-
 @media (max-width: 768px) {
   header {
     background-image: url('photos/hero-mobile.jpg'); /* mobile image */
   }
 }
-
 /* Overlay for hero image */
 header::before {
   content: "";
@@ -77,7 +73,6 @@ header a.subtitle {
   position: relative;
   z-index: 1;
 }
-
 /* Gallery layout */
 .gallery {
   display: grid;
@@ -181,15 +176,12 @@ header a.subtitle {
     font-size: 0.9rem;
   }
 }
-
 .gallery figure {
   cursor: zoom-in;
 }
-
 .gallery figure:active img {
   opacity: 0.85;
 }
-
 .gallery figcaption {
   transform: translateY(10px);
 }
@@ -197,7 +189,6 @@ header a.subtitle {
 .gallery figure:hover figcaption {
   transform: translateY(0);
 }
-
 /* Fade-in effect after unlock */
 .fade-hidden {
   opacity: 0;
@@ -207,38 +198,15 @@ header a.subtitle {
 .fade-visible {
   opacity: 1;
 }
-
-/* ===== Password screen extras (visual polish) ===== */
 @keyframes pulseGlow {
   0% { box-shadow: 0 0 30px rgba(255,255,255,0.3); }
   50% { box-shadow: 0 0 50px rgba(255,255,255,0.5); }
   100% { box-shadow: 0 0 30px rgba(255,255,255,0.3); }
 }
 
-/* Force the KRONOS band to truly span edge-to-edge */
 .password-band {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 0;
-}
-#password-overlay {
-  padding: 0;
-}
-
-
-
-  /* keep your glow animation */
   animation: pulseGlow 4s infinite ease-in-out;
 }
-
-/* Optional: if your password UI uses #password-box, make it full width too */
-#password-box {
-  width: 100%;
-  max-width: none;
-}
-
 #password-overlay::after {
   content: "";
   position: absolute;
@@ -252,7 +220,9 @@ header a.subtitle {
   );
   pointer-events: none;
 }
-
+document.getElementById("password-input").addEventListener("keydown", e => {
+  if (e.key === "Enter") unlockSite();
+});
 #password-box h2 {
   text-shadow: 0 0 8px rgba(255,255,255,0.6);
 }
