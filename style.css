@@ -198,3 +198,31 @@ header a.subtitle {
 .fade-visible {
   opacity: 1;
 }
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 30px rgba(255,255,255,0.3); }
+  50% { box-shadow: 0 0 50px rgba(255,255,255,0.5); }
+  100% { box-shadow: 0 0 30px rgba(255,255,255,0.3); }
+}
+
+.password-band {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+#password-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.03) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+}
+document.getElementById("password-input").addEventListener("keydown", e => {
+  if (e.key === "Enter") unlockSite();
+});
+#password-box h2 {
+  text-shadow: 0 0 8px rgba(255,255,255,0.6);
+}
