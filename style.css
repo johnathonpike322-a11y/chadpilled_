@@ -223,6 +223,10 @@ header a.subtitle {
   transform: translateX(-50%);
   border-radius: 0;
 }
+#password-overlay {
+  padding: 0;
+}
+
 
 
   /* keep your glow animation */
