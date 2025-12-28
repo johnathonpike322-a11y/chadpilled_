@@ -5,20 +5,94 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ChadPilled_ – Gallery</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Password screen */
+    #password-overlay {
+      position: fixed;
+      inset: 0;
+      background: #0e0e0e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      text-align: center;
+    }
+
+    #password-box {
+      max-width: 300px;
+      width: 100%;
+    }
+
+    #password-box h2 {
+      font-weight: 300;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    #password-box input {
+      width: 100%;
+      padding: 12px;
+      background: #111;
+      border: 1px solid #333;
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    #password-box button {
+      width: 100%;
+      padding: 12px;
+      background: #fff;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    #password-error {
+      color: #ff6666;
+      font-size: 0.9rem;
+      margin-top: 10px;
+      display: none;
+    }
+
+    /* Hide site until unlocked */
+    #site-content {
+      display: none;
+    }
+  </style>
 </head>
 <body>
+
+<!-- PASSWORD OVERLAY -->
+<div id="password-overlay">
+  <div id="password-box">
+    <h2>1234567890</h2>
+    <input type="password" id="password-input" placeholder="Password">
+    <button onclick="unlockSite()">Enter</button>
+    <div id="password-error">Incorrect password</div>
+  </div>
+</div>
+
+<!-- SITE CONTENT -->
+<div id="site-content">
 
 <header>
   <h1>ChadPilled</h1>
   <p class="subtitle">Shots From My Pentax K10 Camera</p>
-  <a href="https://instagram.com/Chadpilled_" 
-    class="subtitle" 
-    target="_blank" 
-    rel="noopener">
+  <a href="https://instagram.com/ChadPilled_" 
+     class="subtitle" 
+     target="_blank" 
+     rel="noopener">
     Instagram
   </a>
 </header>
+
 <main class="gallery">
+  <!-- (ALL your figures unchanged) -->
+  <!-- I have not altered any images or captions -->
+
   <figure>
     <img src="photos/hotelroom.jpg" alt="">
     <figcaption>Hotel Room</figcaption>
@@ -147,6 +221,23 @@
     if(e.target === lightbox) lightbox.style.display = 'none';
   });
 </script>
+</div> <!-- end site-content -->
 
+<script>
+  const correctPassword = "yourpasswordhere"; // CHANGE THIS
+
+  function unlockSite() {
+    const input = document.getElementById('password-input').value;
+    const error = document.getElementById('password-error');
+
+    if (input === correctPassword) {
+      document.getElementById('password-overlay').style.display = 'none';
+      document.getElementById('site-content').style.display = 'block';
+    } else {
+      error.style.display = 'block';
+    }
+  }
+</script>
+  
 </body>
 </html>
