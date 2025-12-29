@@ -7,7 +7,40 @@
 
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<script>
+  const correctPassword = "KRONOS";
+
+  // lock scrolling until unlocked
+  document.body.classList.add("locked");
+
+  const form = document.getElementById("password-form");
+  const inputEl = document.getElementById("password-input");
+  const errorEl = document.getElementById("password-error");
+  const overlay = document.getElementById("password-overlay");
+  const content = document.getElementById("site-content");
+
+  function unlockSite() {
+    const input = inputEl.value.trim();
+
+    if (input === correctPassword) {
+      errorEl.style.display = "none";
+      overlay.style.display = "none";
+      content.classList.add("visible");
+      document.body.classList.remove("locked");
+    } else {
+      errorEl.style.display = "block";
+      inputEl.focus();
+      inputEl.select();
+    }
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault(); // stops page reload
+    unlockSite();
+  });
+</script>
+
+  <body>
 
 <!-- PASSWORD OVERLAY -->
 <div id="password-overlay">
