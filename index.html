@@ -1,168 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ChadPilled – Gallery</title>
-
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
-<script>
-  const correctPassword = "KRONOS";
 
-  // lock scrolling until unlocked
-  document.body.classList.add("locked");
+<body class="locked">
 
-  const form = document.getElementById("password-form");
-  const inputEl = document.getElementById("password-input");
-  const errorEl = document.getElementById("password-error");
-  const overlay = document.getElementById("password-overlay");
-  const content = document.getElementById("site-content");
+  <!-- PASSWORD OVERLAY -->
+  <div id="password-overlay">
+    <div id="password-box">
+      <h2>Enter password</h2>
 
-  function unlockSite() {
-    const input = inputEl.value.trim();
-
-    if (input === correctPassword) {
-      errorEl.style.display = "none";
-      overlay.style.display = "none";
-      content.classList.add("visible");
-      document.body.classList.remove("locked");
-    } else {
-      errorEl.style.display = "block";
-      inputEl.focus();
-      inputEl.select();
-    }
-  }
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault(); // stops page reload
-    unlockSite();
-  });
-</script>
-
-  <body>
-
-<!-- PASSWORD OVERLAY -->
-<div id="password-overlay">
-  <div id="password-box">
-    <h2>Enter password</h2>
-
-    <form id="password-form" autocomplete="off">
-      <input
-        type="password"
-        id="password-input"
-        placeholder="Password"
-        autocomplete="current-password"
-      >
-      <button type="submit" id="password-btn">Unlock</button>
-      <div id="password-error">Wrong password. Try again.</div>
-    </form>
+      <form id="password-form" autocomplete="off">
+        <input
+          type="password"
+          id="password-input"
+          placeholder="Password"
+          autocomplete="current-password"
+        />
+        <button type="submit" id="password-btn">Unlock</button>
+        <div id="password-error">Wrong password. Try again.</div>
+      </form>
+    </div>
   </div>
-</div>
 
+  <!-- SITE CONTENT -->
+  <div id="site-content">
+    <header>
+      <h1>ChadPilled</h1>
+      <p class="subtitle">Shots From My Pentax K10 Camera</p>
 
-<!-- SITE CONTENT -->
-<div id="site-content">
+      <a
+        href="https://instagram.com/ChadPilled_"
+        class="subtitle"
+        target="_blank"
+        rel="noopener"
+      >
+        Instagram
+      </a>
+    </header>
 
-  <header>
-    <h1>ChadPilled</h1>
-    <p class="subtitle">Shots From My Pentax K10 Camera</p>
+    <main class="gallery">
+      <figure><img src="photos/denvertasmania.jpg" alt=""><figcaption>Federation Peak, Tasmania</figcaption></figure>
+      <figure><img src="photos/moretasmania.jpg" alt=""><figcaption>Federation Peak</figcaption></figure>
+      <figure><img src="photos/hotelroom.jpg" alt=""><figcaption>Hotel Room</figcaption></figure>
+      <figure><img src="photos/coffee.jpg" alt=""><figcaption>Coffee</figcaption></figure>
+      <figure><img src="photos/brushingteeth.jpg" alt=""><figcaption>Brushing Teeth</figcaption></figure>
+      <figure><img src="photos/ben.jpg" alt=""><figcaption>Ben</figcaption></figure>
+      <figure><img src="photos/denverjungle.JPG" alt=""><figcaption>Denver</figcaption></figure>
+      <figure><img src="photos/egg.jpg" alt=""><figcaption>Egg Shells</figcaption></figure>
+      <figure><img src="photos/jamesbeach.JPG" alt=""><figcaption>James At The Beach</figcaption></figure>
+      <figure><img src="photos/jamesbryce.JPG" alt=""><figcaption>Pomegranite Juice</figcaption></figure>
+      <figure><img src="photos/jamesfire.jpg" alt=""><figcaption>Fire</figcaption></figure>
+      <figure><img src="photos/pia.jpg" alt=""><figcaption>Pia</figcaption></figure>
+      <figure><img src="photos/poop.jpg" alt=""><figcaption>Poop</figcaption></figure>
+      <figure><img src="photos/tower.jpg" alt=""><figcaption>Tower At Night</figcaption></figure>
+      <figure><img src="photos/jamesjungle.JPG" alt=""><figcaption>James</figcaption></figure>
+      <figure><img src="photos/view.JPG" alt=""><figcaption>Nice View</figcaption></figure>
+      <figure><img src="photos/warrenalice.JPG" alt=""><figcaption>Warren Alice</figcaption></figure>
+      <figure><img src="photos/warrenwind.jpg" alt=""><figcaption>Windmill</figcaption></figure>
+      <figure><img src="photos/warren.jpg" alt=""><figcaption>Warren</figcaption></figure>
+      <figure><img src="photos/jamesmartyna.JPG" alt=""><figcaption>James And Martyna</figcaption></figure>
+      <figure><img src="photos/superman.JPG" alt=""><figcaption>James</figcaption></figure>
+      <figure><img src="photos/chicken.JPG" alt=""><figcaption>Fried Chicken</figcaption></figure>
+      <figure><img src="photos/chocolateswastika.JPG" alt=""><figcaption>Ferrero Rocher</figcaption></figure>
+      <figure><img src="photos/throw.JPG" alt=""><figcaption>!!</figcaption></figure>
+    </main>
+  </div>
 
-    <a
-      href="https://instagram.com/ChadPilled_"
-      class="subtitle"
-      target="_blank"
-      rel="noopener"
-    >
-      Instagram
-    </a>
-  </header>
+  <!-- PASSWORD SCRIPT (ONLY ONE) -->
+  <script>
+    const correctPassword = "KRONOS";
 
-  <main class="gallery">
-    <figure><img src="photos/denvertasmania.jpg"><figcaption>Federation Peak, Tasmania</figcaption></figure>
-    <figure><img src="photos/moretasmania.jpg"><figcaption>Federation Peak</figcaption></figure>
-    <figure><img src="photos/hotelroom.jpg"><figcaption>Hotel Room</figcaption></figure>
-    <figure><img src="photos/coffee.jpg"><figcaption>Coffee</figcaption></figure>
-    <figure><img src="photos/brushingteeth.jpg"><figcaption>Brushing Teeth</figcaption></figure>
-    <figure><img src="photos/ben.jpg"><figcaption>Ben</figcaption></figure>
-    <figure><img src="photos/denverjungle.JPG"><figcaption>Denver</figcaption></figure>
-    <figure><img src="photos/egg.jpg"><figcaption>Egg Shells</figcaption></figure>
-    <figure><img src="photos/jamesbeach.JPG"><figcaption>James At The Beach</figcaption></figure>
-    <figure><img src="photos/jamesbryce.JPG"><figcaption>Pomegranite Juice</figcaption></figure>
-    <figure><img src="photos/jamesfire.jpg"><figcaption>Fire</figcaption></figure>
-    <figure><img src="photos/pia.jpg"><figcaption>Pia</figcaption></figure>
-    <figure><img src="photos/poop.jpg"><figcaption>Poop</figcaption></figure>
-    <figure><img src="photos/tower.jpg"><figcaption>Tower At Night</figcaption></figure>
-    <figure><img src="photos/jamesjungle.JPG"><figcaption>James</figcaption></figure>
-    <figure><img src="photos/view.JPG"><figcaption>Nice View</figcaption></figure>
-    <figure><img src="photos/warrenalice.JPG"><figcaption>Warren Alice</figcaption></figure>
-    <figure><img src="photos/warrenwind.jpg"><figcaption>Windmill</figcaption></figure>
-    <figure><img src="photos/warren.jpg"><figcaption>Warren</figcaption></figure>
-    <figure><img src="photos/jamesmartyna.JPG"><figcaption>James And Martyna</figcaption></figure>
-    <figure><img src="photos/superman.JPG"><figcaption>James</figcaption></figure>
-    <figure><img src="photos/chicken.JPG"><figcaption>Fried Chicken</figcaption></figure>
-    <figure><img src="photos/chocolateswastika.JPG"><figcaption>Ferrero Rocher</figcaption></figure>
-    <figure><img src="photos/throw.JPG"><figcaption>!!</figcaption></figure>
-  </main>
-
-</div>
-
-<!-- PASSWORD SCRIPT -->
-<script>
-  const correctPassword = "KRONOS";
-
-  function unlockSite() {
-    const input = document.getElementById("password-input").value.trim();
-    const error = document.getElementById("password-error");
-    const overlay = document.getElementById("password-overlay");
-    const content = document.getElementById("site-content");
-
-    if (input === correctPassword) {
-      error.style.display = "none";
-      overlay.style.display = "none";
-      content.classList.add("visible");
-    } else {
-      error.style.display = "block";
-    }
-  }
-
-  document.getElementById("password-btn").addEventListener("click", unlockSite);
-
-  document.getElementById("password-input").addEventListener("keydown", (e) => {
-    if (e.key === "Enter") unlockSite();
-  });
-<script>
-  
-
-  // lock scroll immediately
-  document.body.classList.add("locked");
-
-  function unlockSite() {
+    const form = document.getElementById("password-form");
     const inputEl = document.getElementById("password-input");
     const errorEl = document.getElementById("password-error");
     const overlay = document.getElementById("password-overlay");
     const content = document.getElementById("site-content");
 
-    const input = inputEl.value.trim();
+    function unlockSite() {
+      const input = inputEl.value.trim();
 
-    if (input === correctPassword) {
-      errorEl.style.display = "none";
-      overlay.style.display = "none";
-      content.classList.add("visible");
-      document.body.classList.remove("locked");
-    } else {
-      errorEl.style.display = "block";
-      inputEl.focus();
-      inputEl.select();
+      if (input === correctPassword) {
+        errorEl.style.display = "none";
+        overlay.style.display = "none";
+        content.classList.add("visible");
+        document.body.classList.remove("locked");
+      } else {
+        errorEl.style.display = "block";
+        inputEl.focus();
+        inputEl.select();
+      }
     }
-  }
 
-  document.getElementById("password-btn").addEventListener("click", unlockSite);
-  document.getElementById("password-input").addEventListener("keydown", (e) => {
-    if (e.key === "Enter") unlockSite();
-  });
-</script>
-
+    // Enter key works because it's a form submit
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      unlockSite();
+    });
+  </script>
 
 </body>
 </html>
