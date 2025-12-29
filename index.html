@@ -14,14 +14,18 @@
     <div id="password-box">
       <h2>Enter password</h2>
 
-      <form id="password-form" autocomplete="off">
+      <!-- Inline onsubmit fallback: Enter WILL trigger this -->
+      <form id="password-form" autocomplete="off" onsubmit="return unlockSite(event)">
         <input
           type="password"
           id="password-input"
           placeholder="Password"
           autocomplete="current-password"
         />
-        <button type="submit" id="password-btn">Unlock</button>
+
+        <!-- Inline onclick fallback -->
+        <button type="submit" id="password-btn" onclick="return unlockSite(event)">Unlock</button>
+
         <div id="password-error">Wrong password. Try again.</div>
       </form>
     </div>
@@ -71,18 +75,20 @@
     </main>
   </div>
 
-  <!-- PASSWORD SCRIPT (ONLY ONE) -->
   <script>
-    const correctPassword = "KRONOS";
+    // Make the function global so inline handlers can always call it
+    window.unlockSite = function (e) {
+      if (e) e.preventDefault();
 
-    const form = document.getElementById("password-form");
-    const inputEl = document.getElementById("password-input");
-    const errorEl = document.getElementById("password-error");
-    const overlay = document.getElementById("password-overlay");
-    const content = document.getElementById("site-content");
+      const correctPassword = "KRONOS"; // must be EXACT (uppercase)
+      const inputEl = document.getElementById("password-input");
+      const errorEl = document.getElementById("password-error");
+      const overlay = document.getElementById("password-overlay");
+      const content = document.getElementById("site-content");
 
-    function unlockSite() {
-      const input = inputEl.value.trim();
+      if (!inputEl || !errorEl || !overlay || !content) return false;
+
+      const input = (inputEl.value || "").trim();
 
       if (input === correctPassword) {
         errorEl.style.display = "none";
@@ -94,12 +100,16 @@
         inputEl.focus();
         inputEl.select();
       }
-    }
 
-    // Enter key works because it's a form submit
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      unlockSite();
+      return false;
+    };
+
+    // Extra safety: bind after DOM is loaded too
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("password-form");
+      if (form) {
+        form.addEventListener("submit", (e) => window.unlockSite(e));
+      }
     });
   </script>
 
