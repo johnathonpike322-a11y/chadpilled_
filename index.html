@@ -14,18 +14,19 @@
   <div id="password-box">
     <h2>Enter password</h2>
 
-    <input
-      type="password"
-      id="password-input"
-      placeholder="Password"
-      autocomplete="current-password"
-    >
-
-    <button id="password-btn" type="button">Unlock</button>
-
-    <div id="password-error">Wrong password. Try again.</div>
+    <form id="password-form" autocomplete="off">
+      <input
+        type="password"
+        id="password-input"
+        placeholder="Password"
+        autocomplete="current-password"
+      >
+      <button type="submit" id="password-btn">Unlock</button>
+      <div id="password-error">Wrong password. Try again.</div>
+    </form>
   </div>
 </div>
+
 
 <!-- SITE CONTENT -->
 <div id="site-content">
