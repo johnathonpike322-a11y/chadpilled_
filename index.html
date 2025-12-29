@@ -14,18 +14,16 @@
     <div id="password-box">
       <h2>Enter password</h2>
 
-      <!-- Inline onsubmit fallback: Enter WILL trigger this -->
-      <form id="password-form" autocomplete="off" onsubmit="return unlockSite(event)">
+      <!-- Form submit = Enter key works automatically -->
+      <form id="password-form" autocomplete="off">
         <input
           type="password"
           id="password-input"
           placeholder="Password"
           autocomplete="current-password"
+          required
         />
-
-        <!-- Inline onclick fallback -->
-        <button type="submit" id="password-btn" onclick="return unlockSite(event)">Unlock</button>
-
+        <button type="submit" id="password-btn">Unlock</button>
         <div id="password-error">Wrong password. Try again.</div>
       </form>
     </div>
@@ -36,13 +34,7 @@
     <header>
       <h1>ChadPilled</h1>
       <p class="subtitle">Shots From My Pentax K10 Camera</p>
-
-      <a
-        href="https://instagram.com/ChadPilled_"
-        class="subtitle"
-        target="_blank"
-        rel="noopener"
-      >
+      <a href="https://instagram.com/ChadPilled_" class="subtitle" target="_blank" rel="noopener">
         Instagram
       </a>
     </header>
@@ -75,22 +67,22 @@
     </main>
   </div>
 
+  <!-- ONE SCRIPT ONLY, AT END OF BODY -->
   <script>
-    // Make the function global so inline handlers can always call it
-    window.unlockSite = function (e) {
-      if (e) e.preventDefault();
+    const correctPassword = "KRONOS";
 
-      const correctPassword = "KRONOS"; // must be EXACT (uppercase)
-      const inputEl = document.getElementById("password-input");
-      const errorEl = document.getElementById("password-error");
-      const overlay = document.getElementById("password-overlay");
-      const content = document.getElementById("site-content");
+    const form = document.getElementById("password-form");
+    const inputEl = document.getElementById("password-input");
+    const errorEl = document.getElementById("password-error");
+    const overlay = document.getElementById("password-overlay");
+    const content = document.getElementById("site-content");
 
-      if (!inputEl || !errorEl || !overlay || !content) return false;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-      const input = (inputEl.value || "").trim();
+      const typed = (inputEl.value || "").trim();
 
-      if (input === correctPassword) {
+      if (typed === correctPassword) {
         errorEl.style.display = "none";
         overlay.style.display = "none";
         content.classList.add("visible");
@@ -99,16 +91,6 @@
         errorEl.style.display = "block";
         inputEl.focus();
         inputEl.select();
-      }
-
-      return false;
-    };
-
-    // Extra safety: bind after DOM is loaded too
-    document.addEventListener("DOMContentLoaded", () => {
-      const form = document.getElementById("password-form");
-      if (form) {
-        form.addEventListener("submit", (e) => window.unlockSite(e));
       }
     });
   </script>
