@@ -1,228 +1,190 @@
-/* Reset & base */
+/* Reset */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* Base */
 body {
   background: #0e0e0e;
   color: #f2f2f2;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 }
 
+/* =========================
+   PASSWORD OVERLAY
+   ========================= */
+
+#password-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+#password-box{
+  width: 100%;
+  max-width: 360px;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 22px;
+  text-align: center;
+  box-shadow: 0 16px 50px rgba(0,0,0,0.6);
+}
+
+#password-box h2{
+  margin-bottom: 14px;
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+
+#password-input{
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: #0b0b0b;
+  color: #fff;
+  outline: none;
+}
+
+#password-input:focus{
+  border-color: rgba(255,255,255,0.35);
+}
+
+#password-btn{
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#password-btn:hover{
+  opacity: 0.9;
+}
+
+#password-error{
+  margin-top: 10px;
+  color: #ffb3b3;
+  font-size: 0.95rem;
+  display: none;
+}
+
+/* =========================
+   SITE CONTENT
+   ========================= */
+
+#site-content{
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease;
+}
+
+#site-content.visible{
+  opacity: 1;
+  visibility: visible;
+}
+
 /* Header */
 header {
   text-align: center;
-  padding: 40px 20px;
+  padding: 80px 20px;
+  background-image: url('photos/hero-mobile.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
 }
 
-header h1 {
+header::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+header h1,
+header .subtitle{
+  position: relative;
+  z-index: 1;
+}
+
+header h1{
   font-weight: 300;
   letter-spacing: 4px;
   font-size: 2rem;
 }
 
-header .subtitle {
-  margin-top: 8px;
+header .subtitle{
+  margin-top: 12px;
   font-weight: 200;
-  font-size: 1rem;
-  color: #ccc;
-}
-header .subtitle {
-  margin-top: 14px;
-  font-weight: 200;
-  font-size: 1rem;
   color: #ccc;
   text-decoration: none;
-  display: block;
-  transition: opacity 0.2s ease;
 }
 
-header .subtitle:hover {
-  opacity: 0.6;
-}
-header {
-  text-align: center;
-  padding: 80px 20px; /* increase vertical padding if needed */
-  background-image: url('photos/hero-mobile.jpg'); /* replace with your image */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: #fff; /* ensures text is visible */
-  position: relative;
-}
-@media (max-width: 768px) {
-  header {
-    background-image: url('photos/hero-mobile.jpg'); /* mobile image */
-  }
-}
-/* Overlay for hero image */
-header::before {
-  content: "";
-  position: absolute;
-  inset: 0; /* covers the entire header */
-  background: rgba(0, 0, 0, 0.5); /* adjust 0.1–0.6 for brightness */
-  z-index: 0;
-}
-
-/* Ensure header text is above the overlay */
-header h1,
-header .subtitle,
-header a.subtitle {
-  position: relative;
-  z-index: 1;
-}
-/* Gallery layout */
-.gallery {
+/* Gallery */
+.gallery{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   padding: 10px;
 }
 
-/* Figure & captions */
-.gallery figure {
+.gallery figure{
   position: relative;
-  margin: 0;
-  cursor: pointer;
+  cursor: zoom-in;
   overflow: hidden;
 }
 
-.gallery img {
+.gallery img{
   width: 100%;
-  height: auto;
   display: block;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
-.gallery figcaption {
+.gallery figcaption{
   position: absolute;
   bottom: 0;
-  left: 0;
   width: 100%;
   padding: 8px;
   background: rgba(0,0,0,0.6);
-  color: #fff;
   font-size: 0.9rem;
   text-align: center;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-/* Hover effects */
-.gallery figure:hover img {
+.gallery figure:hover img{
   transform: scale(1.03);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
 }
 
-.gallery figure:hover figcaption {
+.gallery figure:hover figcaption{
   opacity: 1;
 }
 
-/* Lightbox */
-.lightbox {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.9);
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.lightbox-content {
-  max-width: 90%;
-  max-height: 80%;
-  margin: 20px auto;
-}
-
-.lightbox-caption {
-  color: #fff;
-  margin-top: 10px;
-}
-
-.close {
-  position: absolute;
-  top: 15px;
-  right: 30px;
-  color: #fff;
-  font-size: 2rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-
 /* Responsive */
-@media (max-width: 900px) {
-  .gallery {
+@media (max-width: 900px){
+  .gallery{
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 420px) {
-  .gallery {
+@media (max-width: 420px){
+  .gallery{
     grid-template-columns: 1fr;
   }
 
-  header h1 {
+  header h1{
     font-size: 1.5rem;
   }
-
-  header .subtitle {
-    font-size: 0.9rem;
-  }
-}
-.gallery figure {
-  cursor: zoom-in;
-}
-.gallery figure:active img {
-  opacity: 0.85;
-}
-.gallery figcaption {
-  transform: translateY(10px);
-}
-
-.gallery figure:hover figcaption {
-  transform: translateY(0);
-}
-/* Fade-in effect after unlock */
-.fade-hidden {
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-
-.fade-visible {
-  opacity: 1;
-}
-@keyframes pulseGlow {
-  0% { box-shadow: 0 0 30px rgba(255,255,255,0.3); }
-  50% { box-shadow: 0 0 50px rgba(255,255,255,0.5); }
-  100% { box-shadow: 0 0 30px rgba(255,255,255,0.3); }
-}
-
-.password-band {
-  animation: pulseGlow 4s infinite ease-in-out;
-}
-#password-overlay::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.03),
-    rgba(255,255,255,0.03) 1px,
-    transparent 2px,
-    transparent 4px
-  );
-  pointer-events: none;
-}
-document.getElementById("password-input").addEventListener("keydown", e => {
-  if (e.key === "Enter") unlockSite();
-});
-#password-box h2 {
-  text-shadow: 0 0 8px rgba(255,255,255,0.6);
 }
