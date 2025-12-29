@@ -95,7 +95,38 @@
   document.getElementById("password-input").addEventListener("keydown", (e) => {
     if (e.key === "Enter") unlockSite();
   });
+<script>
+  const correctPassword = "KRONOS";
+
+  // lock scroll immediately
+  document.body.classList.add("locked");
+
+  function unlockSite() {
+    const inputEl = document.getElementById("password-input");
+    const errorEl = document.getElementById("password-error");
+    const overlay = document.getElementById("password-overlay");
+    const content = document.getElementById("site-content");
+
+    const input = inputEl.value.trim();
+
+    if (input === correctPassword) {
+      errorEl.style.display = "none";
+      overlay.style.display = "none";
+      content.classList.add("visible");
+      document.body.classList.remove("locked");
+    } else {
+      errorEl.style.display = "block";
+      inputEl.focus();
+      inputEl.select();
+    }
+  }
+
+  document.getElementById("password-btn").addEventListener("click", unlockSite);
+  document.getElementById("password-input").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") unlockSite();
+  });
 </script>
+
 
 </body>
 </html>
